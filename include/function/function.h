@@ -37,3 +37,23 @@ namespace functions {
 
         int create_value(int n) const;
     };
+
+    const int CAPACITY = 5;
+
+    class Function_List {
+    private:
+        Function data[CAPACITY];
+        int _size;
+    public:
+        Function_List();
+        int size() const;
+
+        Function operator[](int index) const;
+
+        void insert(int index, Function x);
+
+        void remove(int index);
+
+    };
+    int index_of_min_value(const Function_List& functions, int n);
+}
