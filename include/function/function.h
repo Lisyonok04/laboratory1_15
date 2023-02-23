@@ -1,8 +1,8 @@
 #pragma once
 
-namespace functions {
+namespace function {
 
-    enum class Typeoffun {
+    enum class Type {
         fack,
         sqrc
     };
@@ -10,40 +10,33 @@ namespace functions {
 
     class Function {
     private:
-        Typeoffun _type;
-        int a;
+        Type _type;
+        int c;
 
     public:
-        Function(Typeoffun type, int a);
-        {
-            _type = sqrc;
-            a = a;
-
-        };
-
-        Function(Typeoffun type);
-        {
-            _type = fack;
-            a = 0;
-        };
-
-        static Function create_fack(int a);
-        static Function create_sqrc(int a);
+        static Function create_fack();
+        static Function create_sqrc(int c);
         Function();
 
-        Typeoffun get_type() const;
+        Type get_type() const;
 
-        int get_a() const;
+        int get_c() const;
 
         int create_value(int n) const;
     };
 
-    const int CAPACITY = 5;
+    bool operator==(const Function& lhs, const Function& rhs);
+
+    bool operator!=(const Function& lhs, const Function& rhs);
 
     class Function_List {
+    public:
+        static const int CAPACITY = 5;
+
     private:
         Function data[CAPACITY];
         int _size;
+
     public:
         Function_List();
         int size() const;
@@ -55,5 +48,6 @@ namespace functions {
         void remove(int index);
 
     };
+
     int index_of_min_value(const Function_List& functions, int n);
 }
