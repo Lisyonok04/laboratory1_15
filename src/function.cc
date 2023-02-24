@@ -43,6 +43,23 @@ int Function::create_sqrc(int n, int c) {
     return(n * n + c);
 }
 
+/*int Function::create_fun(int n, int c) {
+    switch (_type) {
+    case Type::fack:
+        if (n < 0)
+            return 0;
+        if (n == 0)
+            return 1;
+        else
+            return n * create_fack(n - 1);
+    case Type::sqrc:
+        return (n * n + c);
+    default:
+        throw runtime_error("[Function::create_value] Invalid function type.");
+    }
+}*/
+
+
 /*bool function::operator==(const Function& lhs, const Function& rhs) {
     return
         lhs.get_type() == rhs.get_type() &&
