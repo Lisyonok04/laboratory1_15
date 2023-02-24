@@ -30,20 +30,25 @@ int Function::get_c() const {
     return _c;
 }
 
-long double fact(int n)
-{
-    if(n < 0) 
-        return 0; 
-    if (n == 0) 
-        return 1; 
-    else 
-        return n * fact(n - 1); 
+int Function::create_fack(int n) {
+    if (n < 0)
+        return 0;
+    if (n == 0)
+        return 1;
+    else
+        return n * create_fack(n - 1);
 };
-long double sqr(int n, float c)
-{
-	return (n*n + c)
+
+int Function::create_sqrc(int n, int c) {
+    return(n * n + c);
 }
-long double min(int n)
-{
-	
+
+/*bool function::operator==(const Function& lhs, const Function& rhs) {
+    return
+        lhs.get_type() == rhs.get_type() &&
+        abs(lhs.get_a() - rhs.get_a()) < EPSILON;
+}*/
+
+bool function::operator!=(const Function& lhs, const Function& rhs) {
+    return !(lhs == rhs);
 }
