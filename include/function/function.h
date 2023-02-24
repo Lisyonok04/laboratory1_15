@@ -22,10 +22,12 @@ namespace function {
 
         int get_c() const;
 
-        int create_value(int n) const;
+        int create_fack(int n);
+        int create_sqrc(int n, int c);
+        //int creat_fun(int n, int c);
     };
 
-    bool operator==(const Function& lhs, const Function& rhs);
+    //bool operator==(const Function& lhs, const Function& rhs);
 
     bool operator!=(const Function& lhs, const Function& rhs);
 
