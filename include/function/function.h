@@ -21,10 +21,7 @@ namespace function {
         Type get_type() const;
 
         int get_c() const;
-
-        int create_fack(int n);
-        int create_sqrc(int n, int c);
-        //int creat_fun(int n, int c);
+        int creat_fun(int n, int c);
     };
 
     //bool operator==(const Function& lhs, const Function& rhs);
