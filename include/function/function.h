@@ -11,22 +11,24 @@ namespace function {
     class Function {
     private:
         Type _type;
-        int c;
+        const int _c;
 
     public:
         static Function create_fack();
         static Function create_sqrc(int c);
         Function();
+        Function(Type type);
+        Function(Type type, const int c);
 
         Type get_type() const;
 
         int get_c() const;
-        int creat_fun(int n, int c);
+        int create_fun(int n);
     };
 
     //bool operator==(const Function& lhs, const Function& rhs);
 
-    bool operator!=(const Function& lhs, const Function& rhs);
+    //bool operator!=(const Function& lhs, const Function& rhs);
 
     class Function_List {
     public:
