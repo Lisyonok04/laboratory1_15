@@ -16,7 +16,7 @@ Function Function_List::operator[] (const int index) const{
 	if (index < 0 || _size <= index) {
 		throw out_of_range("[FunctionList::operator[]] Index is out of range.");
 	}
-	return _function[index];
+	return data[index];
 }
 
 void Function_List::insert(int index, const Function f) {
@@ -38,5 +38,5 @@ int Function_List::index_of_min_value(const Function_List& functions, int n) {
 		const auto value = functions[i].create_fun(i, c);
 		if 
 	}
-
+	return min_index;
 }
