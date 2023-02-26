@@ -18,9 +18,9 @@ Function Function::create_fack() {
 
 Function::Function() : _type(Type::sqrc), _c(1) { }
 
-Function::Function(const Type type) : _type(Type::fack), _c(0) { }
+Function::Function(const Type type) : _type(type), _c(0) { }
 
-Function::Function(const Type type, const int c) : _type(Type::sqrc), _c(c) { }
+Function::Function(const Type type, const int c) : _type(type), _c(c) { }
 
 Type Function::get_type() const {
     return _type;
@@ -28,14 +28,6 @@ Type Function::get_type() const {
 
 int Function::get_c() const {
     return _c;
-}
-
-Function Function::create_fack() {
-    return Function(Type::fack);
-}
-
-Function Function::create_sqrc(int c) {
-    return Function(Type::sqrc, c);
 }
 
 int factorial(int n) {
@@ -47,12 +39,12 @@ int factorial(int n) {
         return n * factorial(n - 1);
 }
 
-int Function::create_fun(int n, int c) {
+int Function::create_fun(int n) {
     switch (_type) {
     case Type::fack:
         return factorial(n);
     case Type::sqrc:
-        return (n * n + c);
+        return (n * n + get_c());
     default:
         throw runtime_error("[Function::create_value] Invalid function type.");
     }
@@ -63,8 +55,8 @@ int Function::create_fun(int n, int c) {
     return
         lhs.get_type() == rhs.get_type() &&
         abs(lhs.get_a() - rhs.get_a()) < EPSILON;
-}*/
+}
 
 bool function::operator!=(const Function& lhs, const Function& rhs) {
     return !(lhs == rhs);
-}
+}*/
