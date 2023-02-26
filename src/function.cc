@@ -30,34 +30,33 @@ int Function::get_c() const {
     return _c;
 }
 
-int Function::create_fack(int n) {
+Function Function::create_fack() {
+    return Function(Type::fack);
+}
+
+Function Function::create_sqrc(int c) {
+    return Function(Type::sqrc, c);
+}
+
+int factorial(int n) {
     if (n < 0)
         return 0;
     if (n == 0)
         return 1;
     else
-        return n * create_fack(n - 1);
-};
-
-int Function::create_sqrc(int n, int c) {
-    return(n * n + c);
+        return n * factorial(n - 1);
 }
 
-/*int Function::create_fun(int n, int c) {
+int Function::create_fun(int n, int c) {
     switch (_type) {
     case Type::fack:
-        if (n < 0)
-            return 0;
-        if (n == 0)
-            return 1;
-        else
-            return n * create_fack(n - 1);
+        return factorial(n);
     case Type::sqrc:
         return (n * n + c);
     default:
         throw runtime_error("[Function::create_value] Invalid function type.");
     }
-}*/
+}
 
 
 /*bool function::operator==(const Function& lhs, const Function& rhs) {
