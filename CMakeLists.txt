@@ -33,7 +33,7 @@ target_include_directories(function-v1 PUBLIC "include")
 
 # Объявляем тесты
 add_executable(function-v1-tests
-    "test/function_list_tests.cc"
-    "test/function_tests.cc"
+    "tests/function_list_tests.cc"
+    "tests/functions_tests.cc"
 )
 target_link_libraries(function-v1-tests function-v1 GTest::gtest_main)
