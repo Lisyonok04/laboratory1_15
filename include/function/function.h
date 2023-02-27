@@ -46,7 +46,7 @@ namespace function {
 
         void insert(int index, Function x);
 
-        //void remove(int index);
+        void remove(int index);
 
         void add(const Function f);
 
