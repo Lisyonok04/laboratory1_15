@@ -29,15 +29,15 @@ void Function_List::add(const Function f) {
 
 void Function_List::insert(int index, const Function f) {
 	if (_size == CAPACITY) {
-		throw runtime_error("[FunctionList::add] Capacity is reached.");
+		throw runtime_error("[FunctionList::insert] Capacity is reached.");
 	}
 	this -> data[index]._type = f._type;
 	this -> data[index]._c = f._c;
 }
 
-//void Function_List::remove(int index) {
-
-//}
+void Function_List::remove(int index) {
+	this->data[index]._c = 0;
+}
 
 int function::index_of_min_value(const Function_List& functions, int x) {
 	int min_index = -1;
