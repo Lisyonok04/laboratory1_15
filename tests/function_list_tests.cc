@@ -6,7 +6,7 @@ using namespace function;
 
 
 
-TEST(FunctionListTests, CapacityCheck) {
+TEST(FunctionListTests, CapacityCheck1) {
     Function_List functions;
     const auto f = Function::create_sqrc(3);
     for (int i = 0; i < Function_List::CAPACITY; ++i) {
@@ -17,6 +17,17 @@ TEST(FunctionListTests, CapacityCheck) {
 
 }
 
+
+TEST(FunctionListTests, CapacityCheck2) {
+    Function_List functions;
+    const auto f = Function::create_sqrc(4);
+    for (int i = 0; i < Function_List::CAPACITY; ++i) {
+        functions.add(f);
+    }
+    functions.insert(6, f);
+    ASSERT_ANY_THROW(functions.insert(6, f));
+
+}
 
 
 TEST(IndexOfFunctionWithMinValue, NoResult) {
