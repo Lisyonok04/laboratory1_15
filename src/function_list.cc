@@ -27,12 +27,16 @@ void Function_List::add(const Function f) {
 	++_size;
 }
 
-void Function_List::insert(int index, const Function f) {
+void Function_List::insert(int index, Function f) {
 	if (_size == CAPACITY) {
 		throw runtime_error("[FunctionList::insert] Capacity is reached.");
 	}
-	this -> data[index]._type = f._type;
-	this -> data[index]._c = f._c;
+	else {
+		for (int i = _size - 1; i != index; i--) {
+			data[index] = f;
+		}
+		_size++;
+	}
 }
 
 void Function_List::remove(int index) {
