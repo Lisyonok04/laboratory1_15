@@ -19,7 +19,7 @@ TEST(FunctionListTests, CapacityCheck) {
 
 
 
-/*TEST(IndexOfFunctionWithMinValue, NoResult) {
+TEST(IndexOfFunctionWithMinValue, NoResult) {
     Function_List functions;
 
     const auto index = index_of_min_value(functions, 0);
@@ -29,24 +29,24 @@ TEST(FunctionListTests, CapacityCheck) {
 
 TEST(IndexOfFunctionWithMinValue, ArgZero) {
     Function_List functions;
-    functions.add(Function::create_cos(1));
-    functions.add(Function::create_cos(2));
-    functions.add(Function::create_cos(2));
-    functions.add(Function::create_cos(1));
+    functions.add(Function::create_sqrc(1));
+    functions.add(Function::create_sqrc(2));
+    functions.add(Function::create_sqrc(2));
+    functions.add(Function::create_sqrc(1));
 
-    const auto index = index_of_max_value(functions, 0);
+    const auto index = index_of_min_value(functions, 4);
+
+    ASSERT_EQ(index, 0);
+}
+
+TEST(IndexOfFunctionWithMinValue, Arg12) {
+    Function_List functions;
+    functions.add(Function::create_sqrc(2));
+    functions.add(Function::create_sqrc(1));
+    functions.add(Function::create_sqrc(1));
+    functions.add(Function::create_sqrc(2));
+
+    const auto index = index_of_min_value(functions, 12);
 
     ASSERT_EQ(index, 1);
 }
-
-TEST(IndexOfFunctionWithMinValue, ArgPi) {
-    Function_List functions;
-    functions.add(Function::create_cos(2));
-    functions.add(Function::create_cos(1));
-    functions.add(Function::create_cos(1));
-    functions.add(Function::create_cos(2));
-
-    const auto index = index_of_min_value(functions, PI);
-
-    ASSERT_EQ(index, 1);
-}*/
