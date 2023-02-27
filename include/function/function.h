@@ -26,9 +26,9 @@ namespace function {
         int create_fun(int n);
     };
 
-    //bool operator==(const Function& lhs, const Function& rhs);
+    bool operator==(const Function& lhs, const Function& rhs);
 
-    //bool operator!=(const Function& lhs, const Function& rhs);
+    bool operator!=(const Function& lhs, const Function& rhs);
 
     class Function_List {
     public:
@@ -46,7 +46,7 @@ namespace function {
 
         void insert(int index, Function x);
 
-        void remove(int index);
+        //void remove(int index);
 
         void add(const Function f);
 
