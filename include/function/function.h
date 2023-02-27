@@ -9,9 +9,9 @@ namespace function {
 
 
     class Function {
-    private:
+    public:
         Type _type;
-        const int _c;
+        int _c;
 
     public:
         static Function create_fack();
@@ -48,7 +48,10 @@ namespace function {
 
         void remove(int index);
 
+        void add(const Function f);
+
     };
 
     int index_of_min_value(const Function_List& functions, int n);
+
 }
