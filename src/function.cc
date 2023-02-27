@@ -51,12 +51,11 @@ int Function::create_fun(int n) {
 }
 
 
-/*bool function::operator==(const Function& lhs, const Function& rhs) {
+bool function::operator==(const Function& lhs, const Function& rhs) {
     return
-        lhs.get_type() == rhs.get_type() &&
-        abs(lhs.get_a() - rhs.get_a()) < EPSILON;
+        lhs.get_type() == rhs.get_type() && lhs.get_c() == rhs.get_c();
 }
 
 bool function::operator!=(const Function& lhs, const Function& rhs) {
     return !(lhs == rhs);
-}*/
+}
