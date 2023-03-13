@@ -39,9 +39,9 @@ void Function_List::insert(int index, Function f) {
 	}
 }
 
-void Function_List::remove(int index) {
+/*void Function_List::remove(int index) {
 	this->data[index]._c = 0;
-}
+}*/
 
 int function::index_of_min_value(const Function_List& functions, int x) {
 	int min_index = -1;
