@@ -16,11 +16,27 @@ Function Function::create_fack() {
 }
 
 
-Function::Function() : _type(Type::sqrc), _c(1) { }
+Function::Function() : _type(Type::sqrc), _c(0) { }
 
 Function::Function(const Type type) : _type(type), _c(0) { }
 
-Function::Function(const Type type, const int c) : _type(type), _c(c) { }
+Function::Function(const Type type, int c) 
+{
+    switch (type) {
+    case Type::sqrc:
+        //_type = sqrc;
+        //_c = c;
+        for (int i = 0; i < capacity; i++) {
+            sequence[i] = i * i + c;
+        }
+    case Type::fack:
+        //_type = fack;
+        //_c = 0;
+        for (int i = 0; i < capacity; i++) {
+            sequence[i] = factorial(i);
+        }
+    }
+}
 
 Type Function::get_type() const {
     return _type;
