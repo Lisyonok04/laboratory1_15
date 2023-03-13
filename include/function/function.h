@@ -9,16 +9,18 @@ namespace function {
 
 
     class Function {
-    public:
+    private:
+        const int capacity = 10;
         Type _type;
-        int _c;
+        int c;
+        float sequence[10];
 
     public:
         static Function create_fack();
         static Function create_sqrc(int c);
         Function();
         Function(Type type);
-        Function(Type type, const int c);
+        Function(Type type, int c);
 
         Type get_type() const;
 
@@ -46,7 +48,7 @@ namespace function {
 
         void insert(int index, Function x);
 
-        void remove(int index);
+        //void remove(int index);
 
         void add(const Function f);
 
