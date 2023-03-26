@@ -12,7 +12,7 @@ namespace function {
     private:
         const int capacity = 10;
         Type _type;
-        int c;
+        int _c;
         float sequence[10];
 
     public:
