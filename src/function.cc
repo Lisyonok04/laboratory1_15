@@ -18,31 +18,26 @@ Function Function::create_fack() {
 
 Function::Function() 
 {
-    _type = Type::sqrc;
+    _type = Type::fack;
     _c = 0;
-    for (int i = 0; i < 10; i++)
-        sequence[i] = 0;
 }
 
 Function::Function(const Type type) 
 {
     _type = type;
     _c = 0;
-    for (int i = 0; i < 10; i++)
-        sequence[i] = 0;
 }
 
 Function::Function(const Type type, int c)
 {
     _type = type;
     _c = c;
-    for (int i = 0; i < 10; i++)
-        sequence[i] = 0;
 }
 
 Type Function::get_type() const {
     return _type;
 }
+
 
 int Function::get_c() const {
     return _c;
@@ -60,15 +55,13 @@ int factorial(int n) {
 int Function::create_fun(int n) {
     switch (_type) {
     case Type::sqrc:
-        for (int i = 0; i < capacity; i++) {
-            sequence[i] = i * i + _c;
-        }
+        return n * n + _c;
+        break;
     case Type::fack:
-        for (int i = 0; i < capacity; i++) {
-            sequence[i] = factorial(i);
-        }
+        return factorial(n);
+        break;
     default:
-        throw runtime_error("[Function::create_value] Invalid function type.");
+        throw runtime_error("[Function::create_fun] Invalid function type.");
     }
 }
 
