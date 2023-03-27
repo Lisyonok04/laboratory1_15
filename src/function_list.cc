@@ -8,7 +8,7 @@ using namespace std;
 
 Function_List::Function_List() : _size(0) { }
 
-int Function_List::size() const {
+int Function_List::get_size() const {
 	return _size;
 }
 
@@ -19,7 +19,7 @@ Function Function_List::operator[] (const int index) const{
 	return data[index];
 }
 void Function_List::add(const Function f) {
-	if (_size == CAPACITY) {
+	if (_size == capacity) {
 		throw runtime_error("[FunctionList::add] Capacity is reached.");
 	}
 
@@ -27,32 +27,42 @@ void Function_List::add(const Function f) {
 	++_size;
 }
 
-void Function_List::insert(int index, Function f) {
-	if (_size == CAPACITY) {
-		throw runtime_error("[FunctionList::insert] Capacity is reached.");
+
+void Function_List::insert(int index, Function function) {
+	if ((index < 0) || (index > capacity) || (_size == capacity)) {
+		throw out_of_range("[FigureList::operator[]] Index is out of range.");
 	}
-	else {
-		for (int i = _size - 1; i != index; i--) {
-			data[index] = f;
-		}
-		_size++;
+	
+	for (int i = _size - 1; i >= index; i--) 
+	{
+		data[i + 1] = data[i];
 	}
+	data[index] = function;
+	++_size;
 }
 
-/*void Function_List::remove(int index) {
-	this->data[index]._c = 0;
-}*/
+void Function_List::remove(int index) {
+	if ((index < 0) || (index >= _size)) {
+		throw out_of_range("[FigureList::operator[]] Index is out of range.");
+	}
+	for (int i = index; i < _size - 1; i++) {
+		data[i] = data[i + 1];
+	}
+	--_size;
+}
 
-int function::index_of_min_value(const Function_List& functions, int x) {
+int function::index_of_min_value(const Function_List& sequence, int x) {
 	int min_index = -1;
-	int min_value = 10000;
-	const auto n = functions.size();
-	for (int i = 0; i < n; i++) {
-		const auto value = functions[i].create_fun(x);
-		if (min_value > value) {
+	int min_value = 0;
+
+	const auto size = sequence.get_size();
+	for (int i = 0; i < size; ++i) {
+		const auto value = sequence[i].create_fun(x);
+		if (min_index == -1 || value <= min_value) {
 			min_index = i;
 			min_value = value;
 		}
 	}
+
 	return min_index;
 }
