@@ -10,14 +10,12 @@ namespace function {
 
     class Function {
     private:
-        const int capacity = 10;
         Type _type;
         int _c;
-        float sequence[10];
 
     public:
         static Function create_fack();
-        static Function create_sqrc(int c);
+        static Function create_sqrc(const int c);
         Function();
         Function(Type type);
         Function(Type type, int c);
@@ -25,6 +23,7 @@ namespace function {
         Type get_type() const;
 
         int get_c() const;
+        int get_n() const;
         int create_fun(int n);
     };
 
@@ -34,22 +33,20 @@ namespace function {
 
     class Function_List {
     public:
-        static const int CAPACITY = 5;
+        static const int capacity = 10;
 
     private:
-        Function data[CAPACITY];
+        Function data[capacity] = {};
         int _size;
 
     public:
         Function_List();
-        int size() const;
+        int get_size() const;
 
         Function operator[](int index) const;
 
         void insert(int index, Function x);
-
-        //void remove(int index);
-
+        void remove(int index);
         void add(const Function f);
 
     };
