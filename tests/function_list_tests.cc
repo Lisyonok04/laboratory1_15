@@ -10,10 +10,21 @@ TEST(FunctionListTests, CapacityCheck) {
     const auto s = Function::Function(Type::sqrc, 0);
     for (int i = 0; i < Function_List::capacity; ++i) {
         sequence.insert(i, s);
-
     }
-    ASSERT_ANY_THROW(sequence.insert(10, s));
+    EXPECT_ANY_THROW(sequence.insert(10, s), std::runtime_error);
+}
 
+TEST(FunctionListTests, AddingCheck) {
+    Function_List sequence;
+
+    sequence.insert(0, Function::Function(Type::sqrc, 3));
+    sequence.insert(1, Function::Function(Type::fack));
+    sequence.insert(2, Function::Function(Type::sqrc, 3));
+    sequence.insert(3, Function::Function(Type::sqrc, 4));
+    sequence.add(1, Function::Function(Type::sqrc, 1));
+    auto index = index_of_min_value(sequence, 2);
+
+    ASSERT_EQ(index, 1);
 }
 
 TEST(IndexOfSequenceWithMinValue, NoResult) {
