@@ -18,19 +18,18 @@ Function Function_List::operator[] (const int index) const{
 	}
 	return data[index];
 }
-void Function_List::add(const Function f) {
+
+void Function_List::add(int index, const Function f) {
 	if (_size == capacity) {
 		throw runtime_error("[FunctionList::add] Capacity is reached.");
 	}
 
-	data[_size] = f;
-	++_size;
+	data[index] = f;
 }
-
 
 void Function_List::insert(int index, Function function) {
 	if ((index < 0) || (index > capacity) || (_size == capacity)) {
-		throw out_of_range("[FigureList::operator[]] Index is out of range.");
+		throw runtime_error("[FigureList::operator[]] Index is out of range.");
 	}
 	
 	for (int i = _size - 1; i >= index; i--) 
