@@ -23,7 +23,6 @@ namespace function {
         Type get_type() const;
 
         int get_c() const;
-        int get_n() const;
         int create_fun(int n);
     };
 
@@ -47,7 +46,7 @@ namespace function {
 
         void insert(int index, Function x);
         void remove(int index);
-        void add(const Function f);
+        void add(int index, const Function f);
 
     };
 
