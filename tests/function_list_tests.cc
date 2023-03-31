@@ -14,6 +14,16 @@ TEST(FunctionListTests, CapacityCheck) {
     EXPECT_ANY_THROW(sequence.insert(10, s), std::runtime_error);
 }
 
+TEST(FunctionListTests, CapacityCheck2) {
+    Function_List sequence;
+
+    const auto s = Function::Function(Type::sqrc, 0);
+    for (int i = 0; i < Function_List::capacity; ++i) {
+        sequence.insert(i, s);
+    }
+    EXPECT_NO_THROW(sequence.insert(10, s), std::runtime_error);
+}
+
 TEST(FunctionListTests, AddingCheck) {
     Function_List sequence;
 
