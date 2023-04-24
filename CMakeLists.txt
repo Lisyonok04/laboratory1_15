@@ -35,7 +35,7 @@ FetchContent_MakeAvailable(googletest)
 add_executable(Console 
             "Console/console.cc" 
             "include/function/function.h")
-target_link_libraries(Console PRIVATE sequence)
+target_link_libraries(Console PRIVATE function-v1)
 
 add_executable(function-v1-tests
     "tests/function_list_tests.cc"
