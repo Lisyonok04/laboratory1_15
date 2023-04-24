@@ -1,11 +1,12 @@
+#include <function/function.h>
 #include <iostream>
 #include <stdlib.h>
-#include <sequence/sequence.h>
 #include <string>
 #include <conio.h>
 #include <locale.h>
-using namespace std;
-using namespace sequences;
+
+using namespace function;
+using namespace std; 
 
 
 int get_key() {
