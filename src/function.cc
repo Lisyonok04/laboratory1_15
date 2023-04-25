@@ -38,6 +38,10 @@ Type Function::get_type() const {
     return _type;
 }
 
+int Function::set_c(int c) {
+    _c = c;
+    return 0;
+}
 
 int Function::get_c() const {
     return _c;
