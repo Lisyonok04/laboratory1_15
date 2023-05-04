@@ -1,5 +1,4 @@
 #include<function/function.h>
-
 #include <stdexcept>
 
 using namespace function;
@@ -19,25 +18,24 @@ Function Function_List::operator[] (const int index) const{
 	return data[index];
 }
 
-void Function_List::add(int index, const Function f) {
-	if (_size == capacity) {
-		throw runtime_error("[FunctionList::add] Capacity is reached.");
-	}
-
-	data[index] = f;
-}
-
-void Function_List::insert(int index, Function function) {
-	if ((index < 0) || (index > capacity) || (_size == capacity)) {
+void Function_List::insert(int index, Function& function) {
+	if ((index < 0) || (index > _size)) {
 		throw runtime_error("[FigureList::operator[]] Index is out of range.");
 	}
 	
-	for (int i = _size - 1; i >= index; i--) 
-	{
-		data[i + 1] = data[i];
+	Function** ptr = new Function * [_size + 1];
+	for (int i = 0; i <= index; i++) {
+		ptr[i] = new Function;
 	}
-	data[index] = function;
+
+	memcpy(ptr, data, sizeof(Function*) * index);
+	*ptr[index] = function;
+	memcpy(ptr + index + 1, data + index, sizeof(Function*) * (_size - index));
 	++_size;
+
+	delete[] data;
+	data = ptr;
+	ptr = nullptr;
 }
 
 void Function_List::remove(int index) {
