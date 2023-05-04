@@ -2,7 +2,11 @@
 
 #include <cassert>
 #include <cmath>
+#include <cstdio>
 #include <stdexcept>
+#include <cstdlib>
+#include <iostream>
+#include <string>
 
 using namespace function;
 using namespace std;
@@ -78,3 +82,22 @@ bool function::operator==(const Function& lhs, const Function& rhs) {
 bool function::operator!=(const Function& lhs, const Function& rhs) {
     return !(lhs == rhs);
 }
+
+/*std::ostream& function::operator<<(std::ostream& out, const Type& type) {
+    switch (type) {
+    case Type::sqrc:
+        out << "sqrc";
+        return out;
+    case Type::fack:
+        out << "fack";
+        return out;
+    }
+
+}
+
+std::ostream& function::operator<<(std::ostream& out, const Function& seq) {
+    int t = seq.get_c();
+    if (seq.get_type() == Type::sqrc) { out << "Type: " << seq.get_type() << "|" << "Shift: " << t; }
+    else(out << "Type: " << seq.get_type());
+    return out;
+}*/
