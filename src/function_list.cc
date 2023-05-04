@@ -13,9 +13,10 @@ int Function_List::get_size() const {
 
 Function Function_List::operator[] (const int index) const{
 	if (index < 0 || _size <= index) {
-		throw out_of_range("[FunctionList::operator[]] Index is out of range.");
+		throw std::runtime_error("Index out of range.");
 	}
-	return data[index];
+
+	return *data[index];
 }
 
 void Function_List::insert(int index, Function& function) {
@@ -42,9 +43,16 @@ void Function_List::remove(int index) {
 	if ((index < 0) || (index >= _size)) {
 		throw out_of_range("[FigureList::operator[]] Index is out of range.");
 	}
-	for (int i = index; i < _size - 1; i++) {
-		data[i] = data[i + 1];
+	Function** ptr = new Function * [_size - 1];
+	for (int i = 0; i < _size - 1; i++) {
+		ptr[i] = new Function;
 	}
+	memcpy(ptr, data, sizeof(Function*) * index);
+	memcpy(ptr + index, data + index + 1, sizeof(Function*) * (_size - index));
+	delete data[index];
+	delete[] data;
+	data = ptr;
+	ptr = nullptr;
 	--_size;
 }
 
@@ -62,4 +70,21 @@ int function::index_of_min_value(const Function_List& sequence, int x) {
 	}
 
 	return min_index;
+}
+
+void Function_List::swap(Function_List& arr) {
+	std::swap(_size, arr._size);
+	std::swap(data, arr.data);
+}
+
+Function_List& ::Function_List::operator=(Function_List arr) {
+	this->swap(arr);
+	return *this;
+}
+
+Function_List::~Function_List() {
+	for (int i = 0; i < _size; i++) {
+		delete data[i];
+	}
+	delete[] data;
 }
