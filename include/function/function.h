@@ -1,5 +1,7 @@
 #pragma once
-
+#include <string>
+#include <iostream>
+#include <cstdio>
 namespace function {
 
     enum class Type {
@@ -23,7 +25,10 @@ namespace function {
         Type get_type() const;
 
         int get_c() const;
+        int set_c(int c);
         int create_fun(int n);
+        friend std::ostream& operator<<(std::ostream& out, const Type& type);
+        friend std::ostream& operator<<(std::ostream& out, const Function& seq);
     };
 
     bool operator==(const Function& lhs, const Function& rhs);
@@ -31,25 +36,44 @@ namespace function {
     bool operator!=(const Function& lhs, const Function& rhs);
 
     class Function_List {
-    public:
-        static const int capacity = 10;
 
     private:
-        Function data[capacity] = {};
+        Function** data;
         int _size;
 
     public:
-        Function_List();
+        Function_List(const Function_List& arr);
+        Function_List() : _size(0), data(nullptr) {};
+        Function_List(int size);
         int get_size() const;
-
-        Function operator[](int index) const;
-
-        void insert(int index, Function x);
+        void insert(int index, Function& s);
         void remove(int index);
-        void add(int index, const Function f);
+        void swap(Function_List& arr);
+        ~Function_List();
+        Function& operator[](int index);
+        Function operator[](int index) const;
+        Function_List& operator=(Function_List arr);
 
     };
 
     int index_of_min_value(const Function_List& functions, int n);
 
+    std::ostream& function::operator<<(std::ostream& out, const Type& type) {
+        switch (type) {
+        case Type::sqrc:
+            out << "sqrc";
+            return out;
+        case Type::fack:
+            out << "fack";
+            return out;
+        }
+
+    }
+
+    std::ostream& function::operator<<(std::ostream& out, const Function& seq) {
+        int s = seq.get_c();
+        if (seq.get_type() == Type::sqrc) { out << "Type: " << seq.get_type() << " " << "Shift: " << s; }
+        else(out << "Type: " << seq.get_type());
+        return out;
+    }
 }
