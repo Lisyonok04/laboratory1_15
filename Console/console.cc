@@ -55,7 +55,7 @@ void InputShift(Function& fun) {
 
 int InputIndex(int size) {
 	bool flag = true;
-	int index;
+	int index = 0;
 	while (flag) {
 		cout << "Введите индекс, куда хотите вставить элемент, или -1, если хотите выйти: ";
 		cin >> index;
