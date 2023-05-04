@@ -50,7 +50,7 @@ TEST(FunctionTests, Sqrc_CreateValue1) {
     int ans2 = s.create_fun(4);
     int ans3 = s.create_fun(5);
 
-    EXPECT_EQ(ans1, 3);
+    EXPECT_EQ(ans1, 4);
     EXPECT_EQ(ans2, 19);
     EXPECT_EQ(ans3, 28);
 }
@@ -84,10 +84,10 @@ TEST(FunctionTests, Sqrc_CreateValueSetShift1) {
     int ans1 = s.create_fun(1);
     int ans2 = s.create_fun(4);
     int ans3 = s.create_fun(5);
-
-    EXPECT_EQ(s.get_c(), 4);
-    EXPECT_EQ(ans1, 4);
-    EXPECT_EQ(ans3, 20);
+    int c = s.get_c();
+    EXPECT_EQ(c, 4);
+    EXPECT_EQ(ans1, 5);
+    EXPECT_EQ(ans2, 20);
     EXPECT_EQ(ans3, 29);
 }
 
@@ -98,9 +98,9 @@ TEST(FunctionTests, Sqrc_CreateValueSetShift2) {
     int ans1 = s.create_fun(2);
     int ans2 = s.create_fun(3);
     int ans3 = s.create_fun(6);
-
-    EXPECT_EQ(s.get_c(), 0);
+    int c = s.get_c();
+    EXPECT_EQ(c, 0);
     EXPECT_EQ(ans1, 4);
-    EXPECT_EQ(ans3, 9);
+    EXPECT_EQ(ans2, 9);
     EXPECT_EQ(ans3, 36);
 }
