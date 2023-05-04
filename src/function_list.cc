@@ -4,14 +4,30 @@
 using namespace function;
 using namespace std;
 
+Function_List::Function_List(const Function_List& arr) {
+	_size = arr._size;
+	data = new Function * [_size];
+	for (int i = 0; i < _size; i++) {
+		data[i] = new Function;
+		*data[i] = arr[i];
+	}
+}
 
-Function_List::Function_List() : _size(0) { }
+Function_List::Function_List(int size) {
+	if (size < 0)throw std::invalid_argument("Size of array should be positive");
+	_size = size;
+	data = new Function * [size];
+	for (int i = 0; i < size; i++) {
+		data[i] = new Function;
+		*data[i] = Function();
+	}
+}
 
 int Function_List::get_size() const {
 	return _size;
 }
 
-Function Function_List::operator[] (const int index) const{
+Function Function_List::operator[] (int index) const{
 	if (index < 0 || _size <= index) {
 		throw std::runtime_error("Index out of range.");
 	}
@@ -19,7 +35,15 @@ Function Function_List::operator[] (const int index) const{
 	return *data[index];
 }
 
-void Function_List::insert(int index, Function& function) {
+Function& Function_List::operator[] (int index) {
+	if (index < 0 || _size <= index) {
+		throw std::runtime_error("Index out of range.");
+	}
+
+	return *data[index];
+}
+
+void Function_List::insert(int index, Function& s) {
 	if ((index < 0) || (index > _size)) {
 		throw runtime_error("[FigureList::operator[]] Index is out of range.");
 	}
@@ -30,7 +54,7 @@ void Function_List::insert(int index, Function& function) {
 	}
 
 	memcpy(ptr, data, sizeof(Function*) * index);
-	*ptr[index] = function;
+	*ptr[index] = s;
 	memcpy(ptr + index + 1, data + index, sizeof(Function*) * (_size - index));
 	++_size;
 
