@@ -35,8 +35,8 @@ Type InputType() {
 	system("cls");
 	while (flag) {
 		cout << "Выберите тип последовательности: " << endl;
-		cout << "1)" << "<Квадрат числа со сдвигом с>" << endl;
-		cout << "2)" << "<Факториал>" << endl;
+		cout << "1)" << "Квадрат числа со сдвигом с" << endl;
+		cout << "2)" << "Факториал" << endl;
 		int seq_type = get_key();
 		if (seq_type == 49) { choose = 0; flag = false; }
 		else if (seq_type == 50) { choose = 1; flag = false; }
