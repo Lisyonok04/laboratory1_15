@@ -27,8 +27,8 @@ namespace function {
         int get_c() const;
         int set_c(int c);
         int create_fun(int n);
-        friend std::ostream& operator<<(std::ostream& out, const Type& type);
         friend std::ostream& operator<<(std::ostream& out, const Function& seq);
+        friend std::ostream& operator<<(std::ostream& out, const Type& type);
     };
 
     bool operator==(const Function& lhs, const Function& rhs);
@@ -42,38 +42,21 @@ namespace function {
         int _size;
 
     public:
+        int get_size() const;
+        void remove(int index);
+        void swap(Function_List& arr);
+        void insert(int index, Function& s);
         Function_List(const Function_List& arr);
         Function_List() : _size(0), data(nullptr) {};
         Function_List(int size);
-        int get_size() const;
-        void insert(int index, Function& s);
-        void remove(int index);
-        void swap(Function_List& arr);
         ~Function_List();
         Function& operator[](int index);
         Function operator[](int index) const;
         Function_List& operator=(Function_List arr);
-
     };
 
     int index_of_min_value(const Function_List& functions, int n);
 
-    std::ostream& function::operator<<(std::ostream& out, const Type& type) {
-        switch (type) {
-        case Type::sqrc:
-            out << "sqrc";
-            return out;
-        case Type::fack:
-            out << "fack";
-            return out;
-        }
+    
 
-    }
-
-    std::ostream& function::operator<<(std::ostream& out, const Function& seq) {
-        int s = seq.get_c();
-        if (seq.get_type() == Type::sqrc) { out << "Type: " << seq.get_type() << " " << "Shift: " << s; }
-        else(out << "Type: " << seq.get_type());
-        return out;
-    }
 }
