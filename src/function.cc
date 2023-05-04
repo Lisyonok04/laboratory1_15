@@ -83,7 +83,14 @@ bool function::operator!=(const Function& lhs, const Function& rhs) {
     return !(lhs == rhs);
 }
 
-/*std::ostream& function::operator<<(std::ostream& out, const Type& type) {
+std::ostream& function::operator<<(std::ostream& out, const Function& seq) {
+    int s = seq.get_c();
+    if (seq.get_type() == Type::sqrc) { out << "Type: " << seq.get_type() << " " << "Shift: " << s; }
+    else(out << "Type: " << seq.get_type());
+    return out;
+}
+
+std::ostream& function::operator<<(std::ostream& out, const Type& type) {
     switch (type) {
     case Type::sqrc:
         out << "sqrc";
@@ -94,10 +101,3 @@ bool function::operator!=(const Function& lhs, const Function& rhs) {
     }
 
 }
-
-std::ostream& function::operator<<(std::ostream& out, const Function& seq) {
-    int t = seq.get_c();
-    if (seq.get_type() == Type::sqrc) { out << "Type: " << seq.get_type() << "|" << "Shift: " << t; }
-    else(out << "Type: " << seq.get_type());
-    return out;
-}*/
